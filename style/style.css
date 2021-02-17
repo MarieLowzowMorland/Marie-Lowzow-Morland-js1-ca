@@ -8,6 +8,10 @@ body {
   width: 100%;
 }
 
+#municipality-slector{
+    width: 15rem;;
+}
+
 .loading {
   border: 10px solid #ebebeb;
   border-top: 10px solid lightsalmon;
