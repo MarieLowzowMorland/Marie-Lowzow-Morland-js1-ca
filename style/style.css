@@ -89,7 +89,7 @@ td:first-child {
 }
 
 
-form {
+form, #success-message {
     width: 400px;
     margin: auto;
 }

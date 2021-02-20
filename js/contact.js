@@ -11,7 +11,7 @@ const validateForm = (event) => {
         .every(valid => valid);  
 
     if(formIsValid){
-        document.getElementById("contact-form").innerHTML = validationMessage;
+        document.getElementById("success-message").innerHTML = validationMessage;
     }
 }
 
@@ -44,7 +44,7 @@ const validateInput = (inputElement) => {
 
 const validateRequired = (value, name) => {
     if(!value || value.trim().length === 0){
-        return `<p>${name} is required.</p>`
+        return `<p>${upperCaseFirst(name)} is required.</p>`
     } else {
         return "";
     }
@@ -55,17 +55,19 @@ const validateEmail = (value, name) => {
     if (regEx.test(value)){
         return "";
     } else {
-        return `<p>${name} must contain at least @ and a domain. I.e "test@example.com".</p>`;
+        return `<p>${upperCaseFirst(name)} must contain at least @ and a domain. I.e "test@example.com".</p>`;
     }
  }
 
  const validateMinLength = (value, minLength, name) => {
      if(!value || value.trim().length < minLength){
-         return `<p>${name} must be at least ${minLength} without leading or trailing spaces.</p>`
+         return `<p>${upperCaseFirst(name)} must be at least ${minLength} without leading or trailing spaces.</p>`
      } else {
          return "";
      }
  }
+
+const upperCaseFirst = (value) => value.charAt(0).toUpperCase() + value.substr(1);
 
 const validateInputEventHandler = (event) => {
     validateInput(event.target);
