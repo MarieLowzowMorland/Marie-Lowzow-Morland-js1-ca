@@ -19,21 +19,22 @@
         <form id="contact-form">
             <label for="name">Name</label>
             <input type="text" name="name" id="name" placeholder="Fill in your name" required/>
-            <div class="form-error" id="nameError">Please enter your name</div>
+            <div class="form-error" id="nameError"></div>
 
             <label for="subject">Subject</label>
-            <input type="text" name="subject" id="subject" placeholder="Fill in subject" minlength="10"/>
-            <div class="form-error" id="subjectError">Please enter a subject</div>
+            <input type="text" name="subject" id="subject" placeholder="Fill in subject" required data-minlength="10"/>
+            <div class="form-error" id="subjectError"></div>
 
             <label for="e-mail">E-mail</label>
-            <input type="email" name="e-mail" id="e-mail" placeholder="Fill in your e-mail"/>
-            <div class="form-error" id="e-mailError">Please enter your e-mail</div>
+            <input type="email" name="e-mail" id="e-mail" placeholder="Fill in your e-mail" required/>
+            <div class="form-error" id="e-mailError"></div>
             
             <label for="address">Address</label>
-            <input type="text" name="address" id="address" placeholder="Fill in your address" minlength="25"/>
-            <div class="form-error" id="addressError">Please enter your address with minimun 25 characters</div>
+            <input type="text" name="address" id="address" placeholder="Fill in your address" required data-minlength="25"/>
+            <div class="form-error" id="addressError"></div>
 
             <button type="submit">Send</button>
+            <div class="clear-float"></div>
         </form>
     </main>
     <script src="/js/contact.js"></script>

@@ -47,4 +47,5 @@ showMunicipalityOptions()
 
 /*
 https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/flatMap
+https://www.w3schools.com/js/js_window_location.asp
 */

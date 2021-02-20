@@ -1,82 +1,85 @@
-
-const form = document.getElementById("contact-form");
-
-const nameError = document.getElementById("nameError");
-const subjectError = document.getElementById("subjectError");
-const emailError = document.getElementById("e-mailError");
-const addressError = document.getElementById("addressError");
+const validationMessage = `
+    <div class="validationMessage">
+        <p>Thank you for filling the form correctly. Have a nice day.</p>
+        <a href="/index.html">Go back to the main page</a>
+    </div>`;
 
 const validateForm = (event) => {
     event.preventDefault();
-    console.log(event.target)
-    console.log(event.target["name"].value)
-    console.log(event.target["name"].required)
-    //TODO: read out rules from event.target instead?
+    const formIsValid = Array.from(event.target.querySelectorAll("input"))
+        .map(validateInput)
+        .every(valid => valid);  
 
-    let valueForm = true;
-    const name = document.getElementById("name");
-    const subject = document.getElementById("subject");
-    const email = document.getElementById("e-mail");
-    const address = document.getElementById("address");
-
-    if(lengthValidator(name.value, 0)){
-        nameError.style.display = "none";
+    if(formIsValid){
+        document.getElementById("contact-form").innerHTML = validationMessage;
     }
-    else {
-        nameError.style.display = "block";
-        valueForm = false
-    }
-
-    if(lengthValidator(subject.value, 11)){
-        subjectError.style.display = "none";
-    }
-    else {
-        subjectError.style.display = "block";
-        valueForm = false
-    }
-
-    if(lengthValidator(address.value, 26)){
-        addressError.style.display = "none";
-    }
-    else {
-        addressError.style.display = "block";
-        valueForm = false
-    }
-
-    if(validateEmail(email.value)){
-        emailError.style.display = "none";
-    }
-    else {
-        emailError.style.display = "block";
-        valueForm = false
-    }
-
-
-    if(valueForm){
-        document.getElementById("contact-form").innerHTML = (validationMessageToHtml())
-    }
-
 }
-const validateEmail = (email) => { 
+
+const validateInput = (inputElement) => {
+    const {name, value, required, type} = inputElement;
+    const minlength = inputElement.getAttribute("data-minlength") || 0;
+    
+    let errorMessages = [];
+    if(required){
+        errorMessages.push(validateRequired(value, name));
+    }
+    if(type === "email"){
+        errorMessages.push(validateEmail(value, name));
+    }
+    if(minlength > 0){
+        errorMessages.push(validateMinLength(value, minlength, name));
+    }
+
+    const errorMessage = errorMessages.join("")
+
+    document.getElementById(`${name}Error`).innerHTML = errorMessage;
+    if (errorMessage === ""){
+        inputElement.classList.remove("invalid");
+        return true;
+    } else {
+        inputElement.classList.add("invalid");
+        return false;
+    };
+}
+
+const validateRequired = (value, name) => {
+    if(!value || value.trim().length === 0){
+        return `<p>${name} is required.</p>`
+    } else {
+        return "";
+    }
+}
+
+const validateEmail = (value, name) => { 
     const regEx = /\S+@\S+\.\S+/;
-    const patternMatches = regEx.test(email);    
-   return patternMatches;
+    if (regEx.test(value)){
+        return "";
+    } else {
+        return `<p>${name} must contain at least @ and a domain. I.e "test@example.com".</p>`;
+    }
  }
 
-const lengthValidator = (value, len) =>{
-    if (value.trim().length > len){
-        return true
-    }
-    else{
-        return false
-    }
+ const validateMinLength = (value, minLength, name) => {
+     if(!value || value.trim().length < minLength){
+         return `<p>${name} must be at least ${minLength} without leading or trailing spaces.</p>`
+     } else {
+         return "";
+     }
+ }
+
+const validateInputEventHandler = (event) => {
+    validateInput(event.target);
 }
 
-form.addEventListener("submit", validateForm)
+const form = document.getElementById("contact-form");
+form.addEventListener("submit", validateForm);
+form.querySelectorAll("input")
+    .forEach(input => input.addEventListener("input", validateInputEventHandler));
 
- const validationMessageToHtml = () => {
-    return `<div class="validationMessage">
-        <p>Thank you for filling the form correctly.Have a nice day.</p>
-        <a href="/index.html">Go back to the main page</a>
-        </div>`;
- }
+/*
+https://developer.mozilla.org/en-US/docs/Web/API/EventTarget
+https://developer.mozilla.org/en-US/docs/Web/API/Element/getAttribute
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Array/every
+https://gomakethings.com/converting-a-nodelist-to-an-array-with-vanilla-javascript/
+
+*/

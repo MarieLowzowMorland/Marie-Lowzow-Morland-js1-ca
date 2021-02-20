@@ -36,8 +36,8 @@ const showMunicipality = async () => {
 };
 
 const findMunicipalityNumber = () => {
-    const search = location.search;
-    return search.substr(search.indexOf("=") + 1);
+    const queryParams = new URLSearchParams(location.search);
+    return queryParams.get("municipalityNumber");
 }
 
 const municipalityToHtml = async (municipality) => {
@@ -96,9 +96,10 @@ const weatherTimeseriesHtmlTableRow = (timeserie) => {
     const {instant, next_1_hours, } = timeserie.data;
     const {air_temperature, wind_speed, } = instant.details;
     const {precipitation_amount, probability_of_precipitation } = next_1_hours && next_1_hours.details || {};
+    const timeString = new Date(timeserie.time).toLocaleString("en", {day: "numeric", month: "long", hour: "2-digit"});
 
     return `<tr>
-        <td>${new Date(timeserie.time).toLocaleString()}</td>
+        <td>${timeString}</td>
         <td>${precipitation_amount || ""}</td>
         <td>${probability_of_precipitation || ""}</td>
         <td>${air_temperature}</td>
@@ -113,4 +114,5 @@ showMunicipality();
 https://stackoverflow.com/questions/1226714/how-to-get-the-browser-to-navigate-to-url-in-javascript
 https://wesbos.com/destructuring-renaming
 https://stackoverflow.com/questions/51405133/check-if-a-date-is-24-hours-old
+https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Date/Date
 */
