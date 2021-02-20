@@ -4,6 +4,7 @@ html {
 
 body {
   background-image: url("/images/sky.jpg");
+  background-position: fixed;
   background-repeat: no-repeat;
   background-size: cover;
   background-position-x: center;
@@ -12,16 +13,32 @@ body {
   margin: 0;
 }
 
+.fixed-background {
+  background-image: url("/images/sky.jpg");
+  background-position: fixed;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position-x: center;
+  position: fixed;
+  z-index: -1;
+  height: 100%;
+  width: 100vw;
+}
+
+.fixed-background-wrapper {
+    position: relative;
+  }
+
 nav {
   color: white;
   display: flex;
-  align-items: center; 
+  align-items: center;
 }
 
 nav a {
-    padding: 5px;
-    color: white;
-    text-decoration: none;
+  padding: 5px;
+  color: white;
+  text-decoration: none;
 }
 
 main {
@@ -30,34 +47,51 @@ main {
   padding: 50px;
   box-shadow: -3px 3px 6px #0000004d;
   margin: auto;
-  margin-top: 100px;
+  margin-top: 85px;
   border-radius: 15px;
+}
+
+footer{
+    margin-top: 100px;
+    min-width: 1px;
+    min-height: 1px;
 }
 
 h1 {
   text-align: center;
-  color: darkblue;
+  color: #003bb3;
   max-width: 500px;
   margin: auto;
 }
 
 h2 {
-    color: blue;
-    text-align: center;
+  color: #0047D6;
+  text-align: center;
+  margin-bottom: 0%;
 }
 
 p {
-    color: gray;
-    text-align: center;
+  color: gray;
+  text-align: center;
+}
+
+#municipality-weather p {
+  margin: 0;
+  font-size: 0.8rem;
+  color: grey;
+}
+
+table {
+  margin-top: 2rem;
 }
 
 td {
-    text-align: center;
+  text-align: center;
 }
 
-td:first-child {    
-    text-align: left;
-    width:  10rem;
+td:first-child {
+  text-align: left;
+  width: 10rem;
 }
 
 #options {
@@ -66,13 +100,9 @@ td:first-child {
   padding: 10px;
 }
 
-#municipality-slector {
-  width: 15rem;
-}
-
 .loading {
   border: 10px solid #ebebeb;
-  border-top: 10px solid lightsalmon;
+  border-top: 10px solid #0047D6;
   border-radius: 50%;
   width: 50px;
   height: 50px;
@@ -87,64 +117,72 @@ td:first-child {
     transform: rotate(360deg);
   }
 }
-
-
-form, #success-message {
-    width: 400px;
-    margin: auto;
+#municipality-slector {
+  width: 22rem;
+  border-radius: 15px;
+  border: 1px solid #0047D6;
+  padding: 0.5rem;
+  outline: none;
 }
 
-form label{
-    color: deepskyblue;
-    font-size: 0.8rem;
-    display: block;
-    margin-top: 15px;
-    margin-left: 10px;
+form,
+#success-message {
+  width: 400px;
+  margin: auto;
 }
 
-form input{
-    width: 100%;
-    padding: 10px;
-    display: block;
-    border: 1px solid deepskyblue;
-    border-radius: 1rem;
-    box-sizing: border-box;
-    outline: none;
+form label,
+label {
+  color: #0047D6;
+  font-size: 0.8rem;
+  display: block;
+  margin-top: 15px;
+  margin-left: 10px;
 }
 
-form input:focus{
-    border-color: darkblue;
+form input {
+  width: 100%;
+  padding: 10px;
+  display: block;
+  border: 1px solid #0047D6;
+  border-radius: 1rem;
+  box-sizing: border-box;
+  outline: none;
 }
 
-form button{    
-    border-radius: 1rem;
-    border: 1px solid deepskyblue;
-    background-color: deepskyblue;
-    color: white;
-    padding: 10px;
-    min-width: 110px;
-    float: right;
-    margin-top: 15px;
-    outline: none;
+form input:focus {
+  border-color: #003bb3;
 }
 
-form button:focus{
-    border-color: darkblue;
-    background-color: darkblue;
-} 
-
-.invalid{
-    border-color: red;
+form button {
+  border-radius: 1rem;
+  border: 1px solid #0047D6;
+  background-color: #0047D6;
+  color: white;
+  padding: 10px;
+  min-width: 110px;
+  float: right;
+  margin-top: 15px;
+  outline: none;
 }
 
-.form-error p{
-    padding-left: 10px;
-    color: red;
-    font-size: 0.8rem;
-    text-align: left;
-    margin: 0;
+form button:focus {
+  border-color: #003bb3;
+  background-color: #003bb3;
 }
 
-.clear-float{
-    clear: both;
+.invalid {
+  border-color: red;
+}
+
+.form-error p {
+  padding-left: 10px;
+  color: red;
+  font-size: 0.8rem;
+  text-align: left;
+  margin: 0;
+}
+
+.clear-float {
+  clear: both;
 }

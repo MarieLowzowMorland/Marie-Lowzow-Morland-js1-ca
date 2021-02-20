@@ -111,6 +111,7 @@ showMunicipality();
 
 
 /*
+https://stackoverflow.com/questions/3552461/how-to-format-a-javascript-date
 https://stackoverflow.com/questions/1226714/how-to-get-the-browser-to-navigate-to-url-in-javascript
 https://wesbos.com/destructuring-renaming
 https://stackoverflow.com/questions/51405133/check-if-a-date-is-24-hours-old
