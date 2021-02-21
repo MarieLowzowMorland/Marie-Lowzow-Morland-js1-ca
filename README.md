@@ -1,5 +1,6 @@
 # Marie-Lowzow-Morland-js1-ca
-Main Menu2of4
+
+Assignment description:
 
 Find an API
 Search for a public, free-to-use API.
@@ -51,3 +52,9 @@ Subject - must have a value with a minimum length of 10
 Email - must have a value and be formatted like an email address
 Address - must have a value with a minimum length of 25
 When the form on this page is submitted, write code to validate the input. If any of the inputs fail validation display an error message for the relevant input.
+
+If all validation passes, add a message above the form indicating the form passed validation.
+
+Rules:
+Sharing APIs and copying and sharing of any code will result in your assignment being given a mark of zero.
+You may only use plain JavaScript for this assignment, no libraries or frameworks. You will be given a mark of zero if you use a library or framework for your JavaScript code.

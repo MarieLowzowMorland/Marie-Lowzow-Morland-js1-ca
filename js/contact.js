@@ -1,9 +1,3 @@
-const validationMessage = `
-    <div class="validationMessage">
-        <p>Thank you for filling the form correctly. Have a nice day.</p>
-        <a href="/index.html">Go back to the main page</a>
-    </div>`;
-
 const validateForm = (event) => {
     event.preventDefault();
     const formIsValid = Array.from(event.target.querySelectorAll("input"))
@@ -11,8 +5,18 @@ const validateForm = (event) => {
         .every(valid => valid);  
 
     if(formIsValid){
-        document.getElementById("success-message").innerHTML = validationMessage;
+        showSuccessMessage();
+    } else {
+        hideSuccessMessage();
     }
+}
+
+const showSuccessMessage = () => {
+    document.getElementById("success-message").style.display = "block";
+}
+
+const hideSuccessMessage = () => {
+    document.getElementById("success-message").style.display = "none";
 }
 
 const validateInput = (inputElement) => {
@@ -38,6 +42,7 @@ const validateInput = (inputElement) => {
         return true;
     } else {
         inputElement.classList.add("invalid");
+        hideSuccessMessage();
         return false;
     };
 }

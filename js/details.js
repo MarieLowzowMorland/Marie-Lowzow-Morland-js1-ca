@@ -28,6 +28,8 @@ const showMunicipality = async () => {
         const response = await fetch(`${urlMunicipalityInfoApi}${municipalityNumber}`);
         const municipality = await response.json();
         const municipalityInfo = await municipalityToHtml(municipality);
+        
+        document.title = `Weather forcast for ${municipality.kommunenavn}`;
         addToDOM(municipalityInfo);
     } catch (error) {
         console.log(error);

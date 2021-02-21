@@ -1,6 +1,7 @@
 :root {
   --primary: #0047d6;
   --header1: #00008b;
+  --error: #a80000;
 }
 
 html {
@@ -8,18 +9,13 @@ html {
 }
 
 body {
-  background-image: url("/images/sky.jpg");
-  background-position: fixed;
-  background-repeat: no-repeat;
-  background-size: cover;
-  background-position-x: center;
-  position: relative;
-  height: 100vh;
+  background-color: var(--header1);
   margin: 0;
 }
 
 .fixed-background {
   background-image: url("/images/sky.jpg");
+  background-color: var(--header1);
   background-position: fixed;
   background-repeat: no-repeat;
   background-size: cover;
@@ -35,7 +31,6 @@ body {
 }
 
 nav {
-  color: white;
   display: flex;
   align-items: center;
 }
@@ -77,14 +72,14 @@ h2 {
 }
 
 p {
-  color: gray;
+  color: #5c5c5c;
   text-align: center;
 }
 
 #municipality-weather p {
   margin: 0;
   font-size: 0.8rem;
-  color: grey;
+  color: #5c5c5c;
 }
 
 table {
@@ -123,6 +118,7 @@ td:first-child {
     transform: rotate(360deg);
   }
 }
+
 #municipality-slector {
   width: 22rem;
   border-radius: 15px;
@@ -135,6 +131,31 @@ form,
 #success-message {
   width: 400px;
   margin: auto;
+}
+
+#success-message {
+  display: none;
+  background-color: rgb(239, 239, 239);
+  border-radius: 15px;
+  padding: 10px;
+  box-shadow: -3px 3px 6px #0000004d;
+}
+
+#success-message p {
+  color: var(--header1);
+}
+
+#success-message a {
+  background-color: var(--primary);
+  border-radius: 1rem;
+  color: white;
+  padding: 10px;
+  min-width: 200px;
+  outline: none;
+  text-decoration: none;
+  float: right;
+  font-size: 0.9rem;
+  text-align: center;
 }
 
 form label,
@@ -156,7 +177,8 @@ form input {
   outline: none;
 }
 
-form input:focus {
+form input:focus,
+form input:hover {
   border-color: var(--header1);
 }
 
@@ -172,18 +194,19 @@ form button {
   outline: none;
 }
 
-form button:focus {
+form button:focus,
+form button:hover {
   border-color: var(--header1);
   background-color: var(--header1);
 }
 
 .invalid {
-  border-color: red;
+  border-color: var(--error);
 }
 
 .form-error p {
   padding-left: 10px;
-  color: red;
+  color: var(--error);
   font-size: 0.8rem;
   text-align: left;
   margin: 0;
